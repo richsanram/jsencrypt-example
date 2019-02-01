@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head>
+    <title>JavaScript RSA Encryption</title>
+    <script src="jsencrypt.min.js"></script>
+  </head>
+  <body>
+    <textarea id="pubkey" rows="15" cols="65" hidden>-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuSjFnaFlRoKbHmvTXviJ
++sVt8I+Lfx7zUU0AL7KeoGFToTsRfMjaUkvI84n3aJeBENH1DcLLW1nusan8zk+h
+m/Iy8/EjoiYhhY3+7SPYI2GEFVDrZQD5o/96zY+o38m43pda08d+OpOaLUyGIL0P
+8eCWGFWdIOq4Gtp74R8bZ+1kwHJwiIwigte5AHtwApdK0Bd5XxiJjhm2P8UY3BCZ
+zFCGyVcIvEvXeDMIO4asagPJvXQM8ZNkBB80aHKF1gjb3xcfbLV5h8qF0W2XAb0+
+Lf6KTReu8VpQ1tMO1wIatnOz6tsdYo0+smLQivrShLxy/taPS08MfEQMvabnftNR
+rwIDAQAB
+-----END PUBLIC KEY-----</textarea><br/>
+    <label for="input">Correo y contraseña:</label><br/>
+    <textarea id="input" name="input" type="text" rows=4 cols=70>ejemplo@dominio.com:ContrasenaSegura1</textarea><br/>
+    <label for="result">Resultado:</label><br/>
+    <textarea id="result" name="result" type="text" rows=8 cols=70></textarea><br/>
+    <button id="encryptButton">Encriptar</button>
+    
+    <script>
+      var encrypt = () => {
+        var encrypt = new JSEncrypt()
+        encrypt.setPublicKey(document.getElementById('pubkey').value)
+        document.getElementById('result').value = encrypt.encrypt(document.getElementById('input').value)
+      }
+      encrypt()
+      document.getElementById('encryptButton').addEventListener('click', encrypt)
+    </script>
+  </body>
+</html>
